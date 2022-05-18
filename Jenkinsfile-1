@@ -10,8 +10,6 @@ pipeline {
     choice(name: 'COMPONENT', choices: ['frontend', 'catalogue', 'mongodb'], description: 'Pick Component')
   }
 
-  triggers { cron('*/1 * * * *') }
-
   environment {
     SSH = credentials('SSH')
   }
