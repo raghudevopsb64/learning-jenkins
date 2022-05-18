@@ -5,6 +5,11 @@ pipeline {
     }
   }
 
+  options {
+    disableConcurrentBuilds()
+
+  }
+
   environment {
     DEMO_URL = "google.com"
     SSH = credentials("SSH")
@@ -20,6 +25,7 @@ pipeline {
         echo 'Hello World'
         echo DEMO_URL
         echo SSH
+        sh 'echo -e "\\e[31mHello"'
       }
     }
 
