@@ -14,7 +14,7 @@ pipeline {
 
     stage('Test') {
       environment {
-        LOCAL_URL = "yahoo.com"
+        DEMO_URL = "yahoo.com"
       }
       steps {
         echo 'Hello World'
