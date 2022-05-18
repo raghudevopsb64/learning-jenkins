@@ -35,7 +35,7 @@ pipeline {
         echo SSH
         sh 'echo -e "\\e[31mHello"'
         echo PERSON
-        
+
       }
     }
 
