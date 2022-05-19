@@ -124,13 +124,18 @@ pipeline {
   stages {
 
     stage('high-level1') {
+
       stages {
+
         stage('One') {
           steps {
             sh 'echo one'
           }
         }
+
+        
       }
+
     }
 
   }
