@@ -169,14 +169,6 @@ pipeline {
 
     stage('high-level1') {
 
-      when {
-        expression {
-          ENV == "prod"
-        }
-      }
-
-      stages {
-
         parallel {
           stage('One') {
             steps {
@@ -191,9 +183,6 @@ pipeline {
           }
         }
 
-
-
-      }
 
     }
 
