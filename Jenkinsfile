@@ -72,6 +72,10 @@
 pipeline {
   agent any
 
+  tools {
+    maven 'maven'
+  }
+
   stages {
 
     stage('One') {
@@ -81,6 +85,6 @@ pipeline {
     }
 
   }
-  
+
 }
 
