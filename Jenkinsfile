@@ -68,51 +68,70 @@
 //  }
 //
 //}
+//
+//pipeline {
+//  agent any
+//
+//  tools {
+//    maven 'maven'
+//  }
+//
+//  environment {
+//    ENV="dev"
+//  }
+//
+//  triggers { upstream(upstreamProjects: 'new1', threshold: hudson.model.Result.SUCCESS) }
+//
+//  stages {
+//
+//    stage('Email to Approver') {
+//      steps {
+//        sh 'echo email'
+//      }
+//    }
+//
+//    stage('One') {
+//      when {
+//        beforeInput true
+//        expression {
+//          ENV == "prod"
+//        }
+//      }
+//      input {
+//        message "Do you approve?"
+//        ok "YES"
+//        submitter "admin"
+//        parameters {
+//          string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+//        }
+//      }
+//      steps {
+//        sh 'echo PERSON = ${PERSON}'
+//        //sh 'mvn version'
+//      }
+//    }
+//
+//  }
+//
+//}
+//
+//
+
 
 pipeline {
   agent any
 
-  tools {
-    maven 'maven'
-  }
-
-  environment {
-    ENV="dev"
-  }
-
-  triggers { upstream(upstreamProjects: 'new1', threshold: hudson.model.Result.SUCCESS) }
-
   stages {
 
-    stage('Email to Approver') {
-      steps {
-        sh 'echo email'
-      }
-    }
-
-    stage('One') {
-      when {
-        beforeInput true
-        expression {
-          ENV == "prod"
+    stage('high-level1') {
+      stages {
+        stage('One') {
+          steps {
+            sh 'echo one'
+          }
         }
-      }
-      input {
-        message "Do you approve?"
-        ok "YES"
-        submitter "admin"
-        parameters {
-          string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-        }
-      }
-      steps {
-        sh 'echo PERSON = ${PERSON}'
-        //sh 'mvn version'
       }
     }
 
   }
-
 }
-
-
